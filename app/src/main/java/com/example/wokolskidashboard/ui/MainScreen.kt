@@ -15,7 +15,6 @@ import com.example.wokolskidashboard.ui.components.IncomeForm
 @Composable
 fun MainScreen() {
     val transactions = remember { mutableStateListOf<Transaction>() }
-
     val balance = transactions.sumOf { if (it.isExpense) -it.amount else it.amount }
 
     Column(
@@ -49,16 +48,24 @@ fun MainScreen() {
 
         Text(text = "Historia:", style = MaterialTheme.typography.titleMedium)
 
-        transactions.forEach { t ->
+        transactions.reversed().forEach { t ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
             ) {
-                Text(text = t.name, modifier = Modifier.weight(1f))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(text = t.name, style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        text = t.category,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = Color.Gray
+                    )
+                }
                 Text(
                     text = if (t.isExpense) "-${t.amount}" else "+${t.amount}",
-                    color = if (t.isExpense) Color.Red else Color.Green
+                    color = if (t.isExpense) Color.Red else Color.Green,
+                    style = MaterialTheme.typography.bodyLarge
                 )
             }
             HorizontalDivider()
