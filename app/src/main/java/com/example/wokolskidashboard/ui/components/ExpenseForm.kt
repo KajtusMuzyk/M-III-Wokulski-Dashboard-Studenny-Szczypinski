@@ -38,14 +38,20 @@ fun ExpenseForm(onTransactionAdded: (Transaction) -> Unit) {
                 text = "Zapisz koszt",
                 enabled = isFormValid,
                 onClick = {
-                    onTransactionAdded(Transaction(
-                        name = name,
-                        amount = amountStr.toDoubleOrNull() ?: 0.0,
-                        isExpense = true,
-                        category = "Wydatki",
-                        isNecessary = isNecessary
-                    ))
-                    name = ""; amountStr = ""
+                    val doubleAmount = amountStr.toDoubleOrNull() ?: 0.0
+                    val cat = if (isNecessary) "Konieczny" else "Zbytek"
+
+                    onTransactionAdded(
+                        Transaction(
+                            name = name,
+                            amount = doubleAmount,
+                            isExpense = true,
+                            category = cat
+                        )
+                    )
+
+                    name = ""
+                    amountStr = ""
                 }
             )
         }
