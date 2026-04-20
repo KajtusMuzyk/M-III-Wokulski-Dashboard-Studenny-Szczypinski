@@ -25,19 +25,6 @@ fun MainScreen() {
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        Text(text = "Dashboard Wokulskiego", style = MaterialTheme.typography.headlineMedium)
-
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp)
-        ) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = "Stan konta:")
-                Text(text = "$balance rubli", style = MaterialTheme.typography.headlineLarge)
-            }
-        }
-
         Text(text = "Dodaj nowe:", style = MaterialTheme.typography.titleMedium)
 
         BalanceHeader(balance = balance)
