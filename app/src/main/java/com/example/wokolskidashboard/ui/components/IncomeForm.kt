@@ -43,7 +43,7 @@ fun IncomeForm(onAddIncome: (Transaction) -> Unit) {
                         name = name,
                         amount = parsedAmount,
                         isExpense = false,
-                        category = "Handel"
+                        category = "Sklep"
                     )
                 )
                 name = ""
