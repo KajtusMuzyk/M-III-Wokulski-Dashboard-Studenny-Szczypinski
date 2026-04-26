@@ -39,7 +39,7 @@ fun ExpenseForm(onTransactionAdded: (Transaction) -> Unit) {
                 enabled = isFormValid,
                 onClick = {
                     val doubleAmount = amountStr.toDoubleOrNull() ?: 0.0
-                    val cat = if (isNecessary) "Konieczny" else "Zbytek"
+                    val cat = if (isNecessary) "Wydatek Konieczny" else "Wydatek Osobisty"
 
                     onTransactionAdded(
                         Transaction(
